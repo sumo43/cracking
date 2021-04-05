@@ -40,11 +40,7 @@ int main(void)
         {
             temp[i][j] = arr[j][i];
 
-            
         }
-
-        
-
         cout << endl;
     }
 

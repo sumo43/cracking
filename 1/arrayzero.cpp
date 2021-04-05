@@ -23,8 +23,6 @@ int main(void)
         }
     }
 
-
-
     while (row.size() != 0)
     {
         int r = row.back(), c = col.back();
