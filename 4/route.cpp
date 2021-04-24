@@ -32,8 +32,6 @@ bool search(Node *root1, Node *root2)
     queue<Node *> queue1;
     queue<Node *> queue2; 
 
-    root1->visited = true, root2->visited = true;      
-
     queue1.push(root1), queue2.push(root2);
 
     while(!queue1.empty() && !queue2.empty())
@@ -42,20 +40,14 @@ bool search(Node *root1, Node *root2)
         Node *r2 = queue2.back();
         queue1.pop(), queue2.pop();
 
-        vector<Node *> nei1 = r1->neighbors;
-        vector<Node *> nei2 = r2->neighbors;
+        if(r1->visited || r2->visited) return true;
+        r1->visited = true;
+        r2->visited = true;
 
-        for(int i = 0; i < nei1.size(); i++)
-        {
-            queue1.push(nei1.at(i));
-        }
-            
-
-
-
+        for(Node *nei : r1->neighbors) queue1.push(nei);
+        for(Node *nei : r2->neighbors) queue2.push(nei);
     }
-
-
+    return false;
 }
 
 int main(void)
@@ -81,8 +73,7 @@ int main(void)
     two->neighbors.push_back(new Node(9));
     two->neighbors.push_back(new Node(8));
 
-    search_connection(one, two);
-    
+    cout << search(one, two) << endl;
 }
 
 

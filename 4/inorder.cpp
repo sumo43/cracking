@@ -6,7 +6,17 @@
 
 using namespace std;
 
-//if98
+template<class T>
+class Solution {
+
+   struct Node {
+
+       T data;
+       Node *left, right;
+       Node() : left(nullptr), right(nullptr) {}; 
+       Node(const T value) : data(value), left(nullptr), right(nullptr) {};
+
+};
 
 class Node
 {

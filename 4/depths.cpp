@@ -20,16 +20,14 @@ class Node
         }
 };
 
-void searchTree(int level, Node *root, vector<vector<Node *>> lists)
+vector< vector< Node*> > searchTree(int level, Node *root, vector< vector< Node*> > lists) 
 {
-    if(level == lists.size())
-    {
-        vector<Node *>add;
-        lists.push_back(add);
-    }
+
+    if(level == lists.size()) lists.resize(level);
     
-    vector<Node *> list = lists[level];
-    list.push_back(root);
+    vector<Node *> list = lists[level-1];
+    if(root) list.push_back(root);
+    else return;
 
     if(root->right != nullptr)
     {
@@ -43,18 +41,11 @@ void searchTree(int level, Node *root, vector<vector<Node *>> lists)
 }
 
     
-
-vector<vector<Node *>> depths(Node *root)
+int main(void)
 {
-    int depth = 0;
-    vector<vector<Node *>> list;
-    vector<Node *>first;
-    first.push_back(root);
-    list.push_back(first);
+    Node *root = new Node();
+    vector< vector< Node *> > list;
+    list = searchTree(0, root, list);
 
-
-
-
-};
-
-    
+    for(vector<Node*> b: list) for(Node *a : b) if(a->data) cout << a->data;
+}

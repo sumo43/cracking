@@ -1,0 +1,69 @@
+#include <cstdio>
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <array>
+#include <algorithm>
+#include <unordered_map>
+#include <random>
+
+using namespace std;
+
+struct Node {
+    int data;
+    Node *left;
+    Node *right;
+    Node(int data) : data(data), left(nullptr), right(nullptr) {};
+};
+
+Node *getRandomNode(Node *head) {
+
+
+    //measure depth
+    Node *runner = head;
+    int val = 0;
+    while(runner != nullptr) {
+        runner = runner->left;
+        val++;
+    }
+
+    //assumes that the tree has 2^n - 1 possible nodes
+    int possibleNodes = (int) pow(2, val) - 1;
+    
+    default_random_engine generator;
+    uniform_int_distribution<int> distribution(0, possibleNodes - 1);
+    
+    int node = distribution(generator);
+    
+    Node *n;
+    pickRandom(n);
+
+
+
+
+}
+
+void pickRandom(Node *&n, int node, int count=0) {
+
+    if(count == node) {
+        
+
+
+
+}
+
+
+
+
+
+
+
+int main(void) {
+
+
+
+    
+
+}
+
+

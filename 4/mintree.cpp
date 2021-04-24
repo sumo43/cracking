@@ -7,53 +7,15 @@
 
 using namespace std;
 
-class Node
-{
-    public:
-        int data;
-        Node *right;
-        Node *left;
-        Node(int data)
-        {
-            this->data = data;
-        }
-        Node()
-        {
-        }
-
-        int getData()
-        {
-            if(this->data)
-            {
-                return this->data;
-            }
-            return -1;
-        }
-
-        static void pprint(Node *root)
-        {
-            if(root == nullptr)
-            {
-                return;
-            }
-
-            if(root->left != nullptr)
-            {
-                pprint(root->left);
-            }
-
-            if(root->right != nullptr)
-            {
-                pprint(root->right);
-            }
-
-
-        }
-
-
+struct Node {
+    int data;
+    Node *left;
+    Node *right;
+    Node () : left(nullptr), right(nullptr) {};
+    Node (int value) : data(value), left(nullptr), right(nullptr) {};
+    ~Node() {delete left, delete right;};
 };
 //root node is middle, left and right are smaller binary searches
-
 
 void branch(Node *root, vector<int> list)
 {
@@ -65,7 +27,7 @@ void branch(Node *root, vector<int> list)
     else if(list.size() == 2)
     {
         root->data = list[1];
-        Node *left = new Node(list[0]);
+        Node*left = new Node(list[0]);
         root->left = left;
         return;
     }
@@ -87,10 +49,9 @@ void branch(Node *root, vector<int> list)
 
 int main(void)
 {
-    
     vector<int> li = {0,1,2,3,4,5,6,7,8,9,10};
     Node *root = new Node();
+
     branch(root, li);
-    Node::pprint(root);
 }
 
