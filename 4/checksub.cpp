@@ -15,21 +15,16 @@ struct Node {
     Node(int data) : data(data), left(nullptr), right(nullptr) {};
 };
 
-bool subtree(Node *head, Node* sub) {
-    if(head == nullptr) {
+bool subtree(Node *large, Node *small) {
+
+    if(large == nullptr) {
         return true;
     }
-    else {
-        if(head == sub) {
-            bool left = subtree(head->left, sub->left);
-            bool right = subtree(head->right, sub->right);
 
-            if(left && right) {
-                return true;
-            }
-        }
-        else return false;
-    }
+    if(large->data != small->data) return false;
+
+    return subtree(large->left, small->left) && subtree(large->right, small->right);
+    
 }
 
 bool subtreeCheck(Node *large, Node *small) {
@@ -37,15 +32,30 @@ bool subtreeCheck(Node *large, Node *small) {
     if(large == nullptr) {
         return false;
     }
-    else if(subtree(large, small)) return true;
-    else {
-        return subtree(large->left, small) || subtree(large->right, small);
+    
+    bool one = false, two = false;
+    if(large->data == small->data) {
+        return subtree(large, small);
     }
+    else
+    {
+        return subtreeCheck(large->left, small) || subtreeCheck(large->right, small);
+    }
+
 }
 
 int main(void) {
 
-        
+    Node *a = new Node(4);
+    a->left = new Node(5);
+    a->right = new Node(6);
 
+    Node *b = new Node(10);
+    b->left = new Node(11);
+    b->right = new Node(12);
+
+    a->right->right = b;
+
+    cout << subtreeCheck(a, b) << endl;
 }
 

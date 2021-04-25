@@ -24,10 +24,9 @@ class Node
         }
 };   
 
-
 bool validate(Node *head)
 {
-    int hval;
+    int hval = head->data;
     if(head->right == nullptr && head->left != nullptr)
     {
         int lval = head->left->data;
@@ -79,6 +78,13 @@ bool validate(Node *head)
 }
 int main(void)
 {
+    Node *a = new Node(5);
+    a->right = new Node(7);
+    a->left = new Node(3);
+    a->right->right = new Node(8);
+    a->right->left = new Node(6);
+    a->left->right = new Node(4);
+   a->left->left = new Node(2);
     
 }
 
