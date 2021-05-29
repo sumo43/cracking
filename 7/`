@@ -1,0 +1,74 @@
+#include <cstdlib>
+#include <iostream>
+#include <vector>
+#include <random>
+
+using namespace std;
+
+// 0 means it's hidden, 1 means there's secretly a bomb, 2 is empty, 3 is marker
+
+class Minesweeper {
+
+
+    public:
+
+
+    int **board;
+    int size;
+
+    int hidden = 0;
+    int bomb = 1;
+    int empty = 2;
+    int marker = 3;
+    int bombCount;
+
+
+    default_random_engine generator;
+    uniform_int_distribution<int> distro;
+
+
+
+
+
+    vector<tuple<int, int>> bombs;
+
+    Minesweeper(int size, int bombCount) {
+        cout << "Print size of board" << endl;
+        cin >> this->size;
+        this->bombCount = bombCount;
+
+        board = new int*[size];
+
+        for(int i = 0; i < size; i++) {
+            board[i] = new int[size];
+            for(int j = 0; j < size; j++) {
+                board[i][j] = 0;
+            }
+        }
+
+        for(int i = 0; i < bombCount; i++) {
+
+
+    }
+
+    void Turn() {
+    //if there's a bomb there, lose the game
+    
+        
+    
+
+};
+
+
+
+
+int main(void) {
+
+
+    Minesweeper *sweeper = new Minesweeper();
+
+
+}
+
+
+    
