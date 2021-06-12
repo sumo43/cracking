@@ -22,8 +22,6 @@ void pprint(stack<int>left, stack<int>middle, stack<int>right) {
         middle.pop();
 
     }
-
-
     cout << "right" << endl;
     for(int i = 0; i < rSize; i++) {
         cout << right.top() << endl;
