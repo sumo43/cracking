@@ -1,0 +1,48 @@
+
+
+
+
+def search(start, end, arr, val):
+    
+
+    if end >= start:
+
+        
+        mid = (end + start) // 2
+
+        mid %= len(arr)
+
+        
+        if arr[mid] == val:
+            return mid
+        elif arr[mid] > val:
+            return search(start, mid - 1, arr, val)
+        elif arr[mid] < val:
+            return search(mid + 1, end, arr, val)
+    else:
+        return -1
+
+
+
+def rotatedSearch(arr, val):
+
+    rot = 0
+    i = 0
+
+    while(arr[i] < arr[i + 1]):
+        i += 1
+    i += 1
+
+    
+    return search(i, len(arr) - 1 + i, arr, val)
+    
+
+
+
+if __name__ == "__main__":
+
+
+    arr = [15,16,19, 20, 25, 1, 3, 4, 5, 7, 10, 14]   
+
+    for item in arr:
+        print(rotatedSearch(arr, item))

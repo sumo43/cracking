@@ -47,7 +47,7 @@ def perm(s):
 
 if __name__ == "__main__":
 
-    s = 'abcd'
+    s = 'adbb'
     s = perm(s) 
     print(s)
 

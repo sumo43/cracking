@@ -1,3 +1,8 @@
+
+
+
+
+
 d = dict()
 
 def coins(n):
@@ -21,7 +26,9 @@ def coins(n):
 
 if __name__ == "__main__":
 
-    c = int(input())
+    c = input()
+    c = int(c)
+
     st = coins(c)
 
     li = []

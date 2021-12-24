@@ -21,49 +21,55 @@ def cat(s, n):
             tl += s[i:]
 
             li.append(tl)
-    
 
     return li
-    
 
-def perm(s, d):
 
-    if(len(d) == 1):
-        st = ""
+def perm(s, l, d):
+
+
+    if l == 1:
+        endingList = []
 
         for key, value in d.items():
-            for i in range(int(value)):
-                st += key
+            if d[key] != 0:
 
-        return st
+                copyDict = copy(d)
+                copyDict[key] -= 1
+                copy_s = s
+                copy_s += key
 
+                endingList.append(s + key)
+
+        return endingList
+
+
+    # for each letter in dict, if it is not 0, return s + it
+
+    returnList = []
 
     for key, value in d.items():
-        copy_dict = copy(d)
+        
+        if d[key] != 0:
+            copyDict = copy(d)
+            copyDict[key] -= 1
+            copy_s = s
+            copy_s += key
+            [returnList.append(l) for l in perm(copy_s, l - 1, copyDict)]
 
-        new_s = s + key
+    # return the previous value plus all of the perms
+    return returnList
 
 
-    catLetter = s[0]
-    rest = s[1:]
-
-    if catLetter in rest:
-        return []
-
-    rest = perm(rest)
-
-    ret = []
-    
-    for i in rest:
-        [ret.append(j) for j in cat(i, catLetter)]
-
-    return ret 
+# append current letter,
+# append three of each following letter
 
 def letterCounter(s):
     d = dict()
 
     for letter in s:
         if letter not in d:
+
             d[letter] = 1
         else:
             d[letter] += 1
@@ -75,4 +81,5 @@ if __name__ == "__main__":
 
     s = 'abbd'
     d = letterCounter(s)
+    print(perm("", len(s),  d))
 
