@@ -1,6 +1,3 @@
-
-
-
 # get a quick upper bound on the size of the array
 def expand(lower, upper, obj):
 

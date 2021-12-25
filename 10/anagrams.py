@@ -1,5 +1,3 @@
-
-
 def anagram(a, b):
     h = dict()
     for item in a:

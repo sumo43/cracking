@@ -1,19 +1,9 @@
-def median_of_three(arr):
-    bottom = 0
-    top = len(arr) - 1
-    mid = (top // 2)
-
-    s = sorted([arr[bottom], arr[top], arr[mid]])
-
-    arr[bottom] = s[0]
-    arr[mid] = s[1]
-    arr[top] = s[2]
+arr = [5,3,1,2,3,4]
 
 def swap(i, j, arr):
-    temp = arr[j]
-    arr[j] = arr[i]
-    arr[i] = temp
-
+    temp = arr[i]
+    arr[i] = arr[j]
+    arr[j] = temp
 
 def quicksort(left, right, arr):
     median = partition(left, right, arr)
@@ -25,18 +15,13 @@ def quicksort(left, right, arr):
 
 
 def partition(left, right, arr):
-
     median = arr[(left + right) // 2]
-
     while(left <= right):
-
-
         while(arr[left] < median):
             left += 1
-
+            
         while(arr[right] > median):
             right -= 1
-
 
         if(left <= right):
             swap(left, right, arr)
@@ -45,14 +30,25 @@ def partition(left, right, arr):
             
     return left 
 
-if __name__ == "__main__":
+arr.sort()
+arr.reverse()
 
+if len(arr) % 2 == 1:
+    mid = len(arr) // 2 + 1
+else:
+    mid = len(arr) // 2
+high = arr[:mid]
+low = arr[mid:]
 
-    arr = [2,6,5,3,4,7,1,0,8]
+low.reverse()
 
-    median_of_three(arr)
+new = []
+j = 0
 
+lenlow = len(low) - 1
 
-    quicksort(0, len(arr) - 1, arr)
-    
-    print(arr)
+for i in range(len(low)):
+    new.append(high[i])
+    new.append(low[lenlow -i])
+if len(arr) % 2 == 1:
+    new.append(high[len(high) - 1])
